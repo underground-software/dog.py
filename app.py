@@ -13,4 +13,4 @@ def application(env, SR):
         res += f.read()
     res += '<h1>Woof!</h1>'
     res += messageblock([('appver', appver())])
-    return 
+    return bytes8(res)
