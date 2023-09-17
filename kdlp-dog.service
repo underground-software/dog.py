@@ -3,3 +3,4 @@ Description=KDLP ORBIT externally-hosted dog-themed service degradation monitor
 
 [Service]
 ExecStart=/var/orbit/dog.py/dogdaemon.py
+WorkingDirectory=/var/orbit/dog.py/

@@ -17,3 +17,8 @@ a small general-purpose uwsgi relay app for calling the twilio API.
 
 List of implemented status checks:
   * watch for 200 status code from GET kdlp.underground.software
+
+This repository includes a systemd service file `kdlp-dog.service`
+and an acompanying installation script `install.sh` to integrate this service into the fedora system frameowkr
+
+configuration settings, such as watchdog activation interval in seconds and the name of the log file are abstracted out to `config.py`

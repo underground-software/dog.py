@@ -9,12 +9,12 @@ from datetime import datetime
 from loguru import logger
 from requests import get
 from sys import stderr
-from os import path
+from os import path, getcwd
 from signal import signal, SIGINT
 from socket import gethostname
 
-INTERVAL_SECS=2
-DOGLOG_FILENAME='dog.log'
+from config import DOGDAEMON_WATCHDOG_INTERVAL_SECS as INTERVAL_SECS
+from config import DOGDAEMON_WATCHDOG_DOGLOG_FILENAME as DOGLOG_FILENAME
 
 def send_urgent_alert(message):
     r = get('http://localhost:6060', params={'msg': message })
@@ -56,7 +56,8 @@ class DogLog:
 
     @classmethod
     def open(cls, mode):
-            cls.logfile = open(DOGLOG_FILENAME, mode)
+        cls.logfile = open(DOGLOG_FILENAME, mode)
+        logger.info(f'writing (mode {mode}) to logfile {getcwd()}/{DOGLOG_FILENAME}')
 
     @classmethod
     def write(cls, bone):
