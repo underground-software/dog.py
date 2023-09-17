@@ -1,0 +1,3 @@
+[submodule "sms.py"]
+	path = sms.py
+	url = https://kdlp.underground.software/cgit/sms.py
