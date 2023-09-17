@@ -26,7 +26,7 @@ fi
 
 # the conditionals are just for making some nice output, either way we are just going to force overwrite the service file and restart it
 cp -f "${DOG_SVC}" "${SVC_DIR}/${DOG_SVC}"
-echo "| - ${SVC_DIR}/${DOG_SVC} up-to-date"
+echo "| - ${SVC_DIR}${DOG_SVC} up-to-date"
 
 systemctl daemon-reload
 systemctl restart kdlp-dog
