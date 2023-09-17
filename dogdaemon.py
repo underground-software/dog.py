@@ -11,6 +11,7 @@ from requests import get
 from sys import stderr
 from os import path
 from signal import signal, SIGINT
+from socket import gethostname
 
 INTERVAL_SECS=2
 DOGLOG_FILENAME='dog.log'
@@ -27,7 +28,7 @@ class ErrorState:
         # if we just discovered the server to be up,
         # send an urgent alert
         if cls._e:
-            send_urgent_alert('ORBIT IS OPERATIONAL')
+            send_urgent_alert(f'{datetime.utcnow()}@{gethostname()} ORBIT FOUND TO BE OPERATIONAL')
             cls._e = False
             logger.warning('(NEWS): Discovered orbit to be online')
 
@@ -36,7 +37,7 @@ class ErrorState:
         # if we just discovered the server to be down,
         # send an urgent alert
         if not cls._e:
-            send_urgent_alert('ORBIT IS DOWN')
+            send_urgent_alert(f'{datetime.utcnow()}@{gethostname()} ORBIT OUTTAGE DETECTED!!!')
             cls._e = True
             logger.warning('(NEWS): Discovered orbit to be offline')
 
